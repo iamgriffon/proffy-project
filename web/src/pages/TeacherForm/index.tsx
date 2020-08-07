@@ -6,7 +6,7 @@ import warningIcon from '../../assets/images/icons/warning.svg';
 import TextArea from '../../components/TextArea/text-area';
 import Select from '../../components/SelectBox';
 import CpfMask from '../../utils/cpf-mask';
-import { FaRegTimesCircle, FaRegCheckCircle } from 'react-icons/fa';
+import { FaRegTimesCircle, FaRegCheckCircle, FaTrash } from 'react-icons/fa';
 import Api from '../../services/api';
 import { useHistory } from 'react-router-dom';
 
@@ -66,6 +66,35 @@ const TeacherForm = () => {
   useEffect(() => {
     checkPasswords()
   }, [checkPasswords]);
+
+  const deletarItem = (i:any) => {
+    let list = [...scheduleItems];
+    list.splice(i,1);
+    setScheduleItems(list);
+  }
+  
+  const listItens = scheduleItems.map((obj,index) =>
+
+
+    <div className="schedule-item" key={index}>
+      <Select label='Dia da semana' name='week_day' value={obj.week_day}
+        onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
+        options={[
+          { value: '0', label: 'Domingo' },
+          { value: '1', label: 'Segunda-feira' },
+          { value: '2', label: 'Terça-feira' },
+          { value: '3', label: 'Quarta-feira' },
+          { value: '4', label: 'Quinta-feira' },
+          { value: '5', label: 'Sexta-feira' },
+          { value: '6', label: 'Sábado' },
+        ]}
+      />
+      <InputForm name='from' label='De' type='time' value={obj.from} onChange={e => setScheduleItemValue(index, 'from', e.target.value)} />
+      <InputForm name='to' label='Até' type='time' value={obj.to} onChange={e => setScheduleItemValue(index, 'to', e.target.value)} />
+      <div className='delete-schedule' onClick={(e)=>{e.preventDefault();e.stopPropagation();deletarItem(index)}}> <FaTrash/> Deletar </div>
+    </div>
+
+  )
 
   const handleAddClass = (event: FormEvent) => {
     event.preventDefault();
@@ -130,26 +159,7 @@ const TeacherForm = () => {
             <legend>Horários disponíveis
           <button type='button' onClick={addNewScheduleItem}>+ Novo horário</button>
             </legend>
-            {
-              scheduleItems.map((scheduleitem, index) => (
-                <div className="schedule-item" key={index}>
-                  <Select label='Dia da semana' name='week_day' value={scheduleitem.week_day}
-                    onChange={e => setScheduleItemValue(index, 'week_day', e.target.value)}
-                    options={[
-                      { value: '0', label: 'Domingo' },
-                      { value: '1', label: 'Segunda-feira' },
-                      { value: '2', label: 'Terça-feira' },
-                      { value: '3', label: 'Quarta-feira' },
-                      { value: '4', label: 'Quinta-feira' },
-                      { value: '5', label: 'Sexta-feira' },
-                      { value: '6', label: 'Sábado' },
-                    ]}
-                  />
-                  <InputForm name='from' label='De' type='time' value={scheduleitem.from} onChange={e => setScheduleItemValue(index, 'from', e.target.value)} />
-                  <InputForm name='to' label='Até' type='time' value={scheduleitem.to} onChange={e => setScheduleItemValue(index, 'to', e.target.value)} />
-                </div>
-              ))
-            }
+            <>{listItens}</>
           </fieldset>
 
           <fieldset>
