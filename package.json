@@ -1,0 +1,27 @@
+{
+  "name": "proffy-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd backend && npm start",
+    "web": "cd web && npm start",
+    "mobile":"cd mobile && npm start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn web\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamgriffon/proffy-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamgriffon/proffy-project/issues"
+  },
+  "homepage": "https://github.com/iamgriffon/proffy-project#readme",
+  "devDependencies": {
+    "@types/concurrently": "^5.2.1",
+    "concurrently": "^5.2.0"
+  }
+}
