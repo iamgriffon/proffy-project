@@ -67,14 +67,13 @@ const TeacherForm = () => {
     checkPasswords()
   }, [checkPasswords]);
 
-  const deletarItem = (i:any) => {
+  const deletarItem = (i:number) => {
     let list = [...scheduleItems];
     list.splice(i,1);
     setScheduleItems(list);
   }
   
   const listItens = scheduleItems.map((obj,index) =>
-
 
     <div className="schedule-item" key={index}>
       <Select label='Dia da semana' name='week_day' value={obj.week_day}

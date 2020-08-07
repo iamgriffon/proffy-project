@@ -102,11 +102,12 @@
 }
 
 
-.delete-schedule {
+.schedule-item .delete-schedule {
   cursor: pointer;
-  align-content: flex-start;
+  display: flex;
   padding-left: 1rem;
-  margin: 0 0 6.4rem 0;
+  padding-bottom: 4rem;
+  padding-top: 1rem;
   font-size: 1.6rem;
 }
 
@@ -154,5 +155,8 @@
     margin-top: 1rem;
     margin-bottom: 1.4rem;
     font-size: 1.6rem;
+  }
+  .schedule-item .delete-schedule {
+    padding-bottom: 2.4rem;
   }
 }
