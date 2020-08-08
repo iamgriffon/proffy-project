@@ -9,10 +9,10 @@ import giveClasses from '../../assets/images/icons/give-classes.png';
 import heartIcon from '../../assets/images/icons/heart.png'
 
 const LandingPage = () => {
-  const navigation = useNavigation();
-  const handleNavigationToGiveClassesPage = () => {
-    navigation.navigate('GiveClasses');
-  }
+  const { navigate  } = useNavigation();
+  const handleNavigationToGiveClassesPage = () => navigate('GiveClasses');
+  const handleNavigationToStudyPage = () => navigate('Study');
+
   return (
     <View style={styles.container}>
       <Image style={styles.banner} source={landingImg} />
@@ -21,7 +21,7 @@ const LandingPage = () => {
         <Text style={styles.titleBold}>O que deseja fazer?</Text>
       </Text>
       <View style={styles.buttonContainer}>
-        <RectButton style={[styles.button, styles.buttonPrimary]}>
+        <RectButton onPress={handleNavigationToStudyPage} style={[styles.button, styles.buttonPrimary]}>
           <Image source={studyIcon} />
           <Text style={styles.buttonText}>Estudar</Text>
         </RectButton>

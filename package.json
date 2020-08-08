@@ -7,7 +7,10 @@
     "server": "cd backend && npm start",
     "web": "cd web && npm start",
     "mobile":"cd mobile && npm start",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn web\""
+    "dev:web": "concurrently --kill-others-on-fail \"yarn server\" \"yarn web\"",
+    "dev:mobile": "concurrently --kill-others-on-fail \"yarn server\" \"yarn mobile\"",
+    "dev:full": "concurrently --kill-others-on-fail \"yarn server\" \"yarn web\" \"yarn mobile\""
+
   },
   "repository": {
     "type": "git",
